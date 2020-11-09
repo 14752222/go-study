@@ -3,6 +3,7 @@ package main
 import (
 	. "fmt"
 	"sort"
+	"strings"
 	)
 func main(){
 	Println("map 使用2")
@@ -91,5 +92,14 @@ func main(){
 	for _, v := range keySlice {
 		Println(mapC[v])
 	}
+   Println("统计一个单词出现的次数")
+   var str="is this the is isNaN"
+   var strSlice= strings.Split(str," ")
+   Println(strSlice)
+   var mapD=make(map[string]int)
+	for _, v := range strSlice {
+         mapD[v]+=1
+	}
+	Println(mapD)
 
 }
