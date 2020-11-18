@@ -14,13 +14,21 @@ type person struct {
 func main()  {
   Println("golang结构体使用，学习")
   Println("golang没有class概念 但是有结构体，结构体更加灵活，使用type关键字定义")
+  Println("---------方法1---------")
   fn()
+  Println("---------方法1---------")
   fn1()
+  Println("---------方法2---------")
   fn2()
+  Println("---------方法3---------")
   fn3()
+  Println("---------方法4---------")
   fn4()
+  Println("---------方法5---------")
   fn5()
+  Println("---------方法6---------")
   fn6()
+  Println("---------方法7---------")
   fn7()
 }
 func fn()  {
