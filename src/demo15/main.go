@@ -1,9 +1,16 @@
 package main
 
-import . "fmt"
+import (
+	. "fmt"
+	"sync"
+	"time"
+)
+var wg sync.WaitGroup
 
 func  T()  {
 Println("管道 goroutine之间的通讯方式")
+	Println("管道 数据读取不到，就会等待管道")
+
 
 }
 
@@ -14,9 +21,12 @@ func main()  {
 	fn()
 	Println("--------方法3--------")
 	fn1()
+	Println("--------方法4--------")
+	eg()
 }
 
 func fn()  {
+	Println("创建管道var ch =make(chan interface{},4)")
 	var ch =make(chan interface{},4)
 	Println("取值遵守 先入先出 管道也是一种类型 而且是引用类型")
 	Println("ch<-10  把 10 发送的到管道")
@@ -62,4 +72,31 @@ func fn1()  {
 	ch1<-20
    Println(<-ch1)
 
+}
+
+type Ch chan  int
+func fn2(ch1 Ch)  {
+	defer wg.Done()
+	for i := 0; i <= 10; i++ {
+		ch1<-i
+
+		Println("写入数据成功",i)
+		time.Sleep(time.Millisecond*500)
+	}
+	close(ch1)
+}
+func fn3(ch1 Ch)  {
+	defer wg.Done()
+	for v := range ch1 {
+		Println("读取数据成功",v)
+		time.Sleep(time.Millisecond*1000)
+	}
+}
+func eg()  {
+	var ch =make(chan int,10)
+	wg.Add(1)
+	go fn2(ch)
+	wg.Add(1)
+	go fn3(ch)
+	wg.Wait()
 }
