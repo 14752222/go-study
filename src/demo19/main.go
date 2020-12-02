@@ -25,7 +25,7 @@ func main()  {
 	 go fn1(i)
 	}
 	Println("----方法3-----")
-	Println("读写互斥锁")
+	Println("读写锁")
 
 	for i := 0; i < 20; i++ {
 		wg.Add(1)
