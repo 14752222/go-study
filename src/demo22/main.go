@@ -13,12 +13,12 @@ func main()  {
   Println("文件操作")
   Println("os.Open()打开的文件只能是只读文件，不能写入")
   Println("-----读取文件------")
-  //fn()
-  //fn1()
-  //fn2()
+  fn()
+  fn1()
+  fn2()
   Println("-----写入文件------")
-  //fn3()
-  //fn4()
+  fn3()
+  fn4()
   fn5()
 }
 func fn()  {
